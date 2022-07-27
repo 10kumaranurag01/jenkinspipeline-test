@@ -3,25 +3,25 @@ pipeline {
     stages {
         stage('One') {
                 steps {
-                        echo 'Hi, this is Kumar Anurag'
+                  echo 'Hi, this is Kumar Anurag'
 			
                 }
         }
 	    stage('Two'){
 		    
-		steps {
-			input('Do you want to proceed?')
-        }
+		       steps {
+			      input('Do you want to proceed?')
+               }
 	    }
         stage('Three') {
                 when {
-                        not {
-                                branch "master"
-                        }
+                     not {
+                      branch "master"
+                    }
                 }
                 steps {
 			echo "Hello"
-                        }
+         }
         }
         stage('Four') {
                 parallel {
@@ -34,7 +34,7 @@ pipeline {
                         agent {
                                 docker {
                                         reuseNode false
-					image 'ubuntu'
+					                    image 'ubuntu'
                                         }
 			}
 				steps {
